@@ -1,6 +1,8 @@
 
 package com.taskmaster.taskmaster.controller;
 
+import com.taskmaster.taskmaster.dto.AuthResponse;
+import com.taskmaster.taskmaster.dto.LoginRequest;
 import com.taskmaster.taskmaster.dto.RegisterRequest;
 import com.taskmaster.taskmaster.entity.User;
 import com.taskmaster.taskmaster.service.AuthService;
@@ -24,4 +26,11 @@ public class AuthController {
         authService.register(request);
         return "User registered successfully";
     }
+
+
+    @PostMapping("/login")
+    public AuthResponse login(@Valid @RequestBody LoginRequest request) {
+        return authService.login(request);
+    }
+
 }
